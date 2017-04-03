@@ -35,7 +35,7 @@
 		.edit-pt {
 			position: absolute;
 			right: 15px;
-			bottom: -30px;
+			bottom: -13px;
 			z-index: 1;
 		}
 		
@@ -55,34 +55,46 @@
 <body>
 	<div ng-app="app" ng-controller="Controller as vm" ng-cloak>
 		<div class="container-fluid">
-			<div class="row fixed-top">
-				<button type="button" class="btn btn-secondary edit-page-button" ng-click="vm.editPage = !vm.editPage">
+			<div class="row fixed-top" style="pointer-events:none">
+				<button type="button" class="btn btn-secondary edit-page-button" ng-click="vm.editPage = !vm.editPage" style="pointer-events:initial">
 					<img class="" src="images/edit.png" width="25">
 				</button>
 				
 				<div class="offset-2 col-8 offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-xl-5 col-xl-2" ng-show="vm.editPage">
-					<div class="alert alert-warning text-center" role="alert">
+					<div class="alert alert-warning text-center" role="alert" style="pointer-events:initial">
 						Edit mode is <strong> On </strong>
 					</div>
 				</div>
 			</div>
 			<div class="row pt-6">
 				<div class="col-12 col-sm-6 col-md-4 col-xl-2" ng-repeat="(house, houseInfo) in vm.houses">
-					<div class="row" style="position: relative">
-						<img class="float-left pl-3 pr-3" ng-src="images/{{house.toLowerCase()}}.png" height="75">
-						<h3 class="d-flex align-self-center">{{house}}</h3>
+					<div class="row">
+						
 					</div>
-					<div class="row" style="position: relative">
+					<div class="row hidden-lg-down">
+						<div class="col d-flex align-items-center justify-content-around">
+							<h3 ng-hide="vm.editPage">{{houseInfo.name || house}}</h3>
+							<input type="text" class="form-control" ng-model="houseInfo.name" ng-model-options='{ debounce: 1000 }' ng-show="vm.editPage" placeholder="{{houseInfo.name || house}}">
+						</div>
+					</div>
+					<div class="row pt-2" style="position: relative">
+						<div class="col col-auto">
+							<img ng-src="images/{{house.toLowerCase()}}.png" height="75">
+						</div>
+						<div class="col d-flex align-items-center justify-content-start hidden-xl-up">
+							<h3 ng-hide="vm.editPage">{{houseInfo.name || house}}</h3>
+							<input type="text" class="form-control" ng-model="houseInfo.name" ng-model-options='{ debounce: 1000 }' ng-show="vm.editPage" placeholder="{{houseInfo.name || house}}">
+						</div>
 						<div class="pt-container ml-auto align-self-center mr-4">
 							<span>{{houseInfo.pt}}</span>
 							<img src="images/pt_bg_inverse.png" height="40">
 						</div>
-						
 						<div class="edit-pt" ng-show="vm.editPage">
-							<button type="button" class="btn btn-secondary btn-sm" ng-click="houseInfo.pt = houseInfo.pt + 1">+</button>
-							<button type="button" class="btn btn-secondary btn-sm" ng-click="houseInfo.pt = houseInfo.pt - 1">-</button>
+							<button type="button" class="btn btn-secondary btn-sm" ng-click="houseInfo.pt = houseInfo.pt + 1" ng-disabled="houseInfo.pt >= 20">+</button>
+							<button type="button" class="btn btn-secondary btn-sm" ng-click="houseInfo.pt = houseInfo.pt - 1" ng-disabled="houseInfo.pt <= 0">-</button>
 						</div>
 					</div>
+					
 					<ul class="list-group card-list pt-3 pb-5">
 						<button type="button" class="list-group-item list-group-item-action" ng-class="{inactive: !card.active}" ng-repeat="card in houseInfo.cards | orderBy:vm.cardOrder" ng-click="card.active = !card.active" ng-disabled="!vm.editPage">
 							<div class="d-flex w-100">
@@ -142,13 +154,23 @@
 					if(!$scope.$$phase) {
 					  $scope.$apply();
 					}
-				}else {
-					resetGame();
 				}
 			});
 			
-			$scope.$watch('vm.houses', (houses) => {
+			$scope.$watch('vm.houses', (houses, oldHouses) => {
 				if(isValidGameState(houses)) {
+					// check if a house has played all their cards
+					var noCardsHouse = playedAllCards(houses);
+					if(noCardsHouse) {
+						var lastCardPlayed = oldHouses[noCardsHouse].cards.find((card) => {
+							return card.active;
+						}).name;
+						
+						houses[noCardsHouse].cards.forEach((card) => {
+							card.active = (lastCardPlayed !== card.name);
+						});
+					}
+				
 					gameRef.set(angular.copy(houses));
 				}
 			}, true);
@@ -161,32 +183,24 @@
 			vm.cardOrder = (card) => {
 				return card.active ? card.order - 100 : card.order;
 			}
+			
+			function playedAllCards(houses) {
+				var returnHouse = null;
+				Object.keys(houses).some((name) => {
+					var house = houses[name];
+					var activeCards = house.cards.filter((card) => { return card.active }).length;
+					if(activeCards === 0) {
+						returnHouse = name;
+						return true;
+					}
+				});
+				return returnHouse;
+			}
 
 			function isValidGameState(game) {
 				return (game && Object.keys(game).length >= 6);
 			}
-			
-			function resetGame() {
-				$http.get('house_cards.json').then((response) => {
-					response.data.forEach((card) => {				
-						var house = vm.houses[card.house] || {};
-						house.cards = house.cards || [];
-						house.cards.push(card);
-						
-						card.active = true;
-						house.pt = 20;
-						
-						vm.houses[card.house] = house;
-					});
-					
-					vm.houseCards = response.data;
-				});
-			}
 		}
-		
-		
-		
-	
 	</script>
 
 </body>

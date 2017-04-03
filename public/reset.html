@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>GoT Helper</title>
+	<link rel="icon" href="images/wolf.png">
+</head>
+<body>
+	<pre id="content"></pre>
+
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	
+	<script>
+		var config = {
+				apiKey: "AIzaSyBrS0okMVKfQ_EHhe1Iyvf4CadHX-n95zA",
+				authDomain: "got-helper.firebaseapp.com",
+				databaseURL: "https://got-helper.firebaseio.com",
+				projectId: "got-helper",
+				storageBucket: "got-helper.appspot.com",
+				messagingSenderId: "369131252409"
+		};
+		firebase.initializeApp(config);
+		var gameRef = firebase.database().ref('game');
+	
+		function resetGame() {
+			var houses = {};
+		
+			$.get('house_cards.json', (data) => {
+				data.forEach((card) => {				
+					var house = houses[card.house] || {};
+					house.cards = house.cards || [];
+					house.cards.push(card);
+					
+					card.active = true;
+					house.pt = 20;
+					
+					houses[card.house] = house;
+				});
+				
+				gameRef.set(houses);
+				$('#content').text(JSON.stringify(houses, null, 2));
+			});
+
+		}
+		
+		resetGame();
+	</script>
+
+</body>
+</html>
