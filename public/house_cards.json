@@ -1,0 +1,380 @@
+[
+  {
+    "house": "Greyjoy",
+    "name": "Euron Crow's Eye",
+    "order": 1,
+    "strength": 4,
+    "swords": 1,
+    "fortifications": 0,
+    "text": ""
+  },
+  {
+    "house": "Greyjoy",
+    "name": "Victarion Grejoy",
+    "order": 2,
+    "strength": 3,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you are attacking, all of your participating Ships (including supporting Greyjoy Ships) add +2 to combat strength instead of +1"
+  },
+  {
+    "house": "Greyjoy",
+    "name": "Theon Greyjoy",
+    "order": 3,
+    "strength": 2,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you are defending an area that contains either a Stronghold or a Castle, this card gains +1 combat strength and a sword icon"
+  },
+  {
+    "house": "Greyjoy",
+    "name": "Balon Greyjoy",
+    "order": 4,
+    "strength": 2,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "The printed combat strength of your opponent's House card is reduced to 0"
+  },
+  {
+    "house": "Greyjoy",
+    "name": "Asha Greyjoy",
+    "order": 5,
+    "strength": 1,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you are not being supported in this combat, this card gains two sword icons and one fortification icon"
+  },
+  {
+    "house": "Greyjoy",
+    "name": "Dagmar Cleftjaw",
+    "order": 6,
+    "strength": 1,
+    "swords": 1,
+    "fortifications": 1,
+    "text": ""
+  },
+  {
+    "house": "Greyjoy",
+    "name": "Aeron Damphair",
+    "order": 7,
+    "strength": 0,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "You may immediately discard two of your available Power tokens to discard Aeron Damphair and choose a difference House Card from your hand (if able)"
+  },
+  {
+    "house": "Lannister",
+    "name": "Tywin Lannister",
+    "order": 1,
+    "strength": 4,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you win this combat, gain two power tokens"
+  },
+  {
+    "house": "Lannister",
+    "name": "Ser Gregor Clegane",
+    "order": 2,
+    "strength": 3,
+    "swords": 3,
+    "fortifications": 0,
+    "text": ""
+  },
+  {
+    "house": "Lannister",
+    "name": "The Hound",
+    "order": 3,
+    "strength": 2,
+    "swords": 0,
+    "fortifications": 2,
+    "text": ""
+  },
+  {
+    "house": "Lannister",
+    "name": "Ser Jaime Lannister",
+    "order": 4,
+    "strength": 2,
+    "swords": 1,
+    "fortifications": 0,
+    "text": ""
+  },
+  {
+    "house": "Lannister",
+    "name": "Tyrion Lannister",
+    "order": 5,
+    "strength": 1,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "You may immediately cancel your opponent's House card and return it to his hand. He must then choose a difference House card to reveal. If he has no other House cards in hand, he cannot use a House card this comabat"
+  },
+  {
+    "house": "Lannister",
+    "name": "Ser Kevan Lannister",
+    "order": 6,
+    "strength": 1,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you are attacking, all of your participating Footman (including supporting Lannister footmen) add +2 combat strength instead of +1"
+  },
+  {
+    "house": "Lannister",
+    "name": "Cersei Lannister",
+    "order": 7,
+    "strength": 0,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you win this combat, you may remove one of the losing opponent's Order tokens from anywhere on the board"
+  },
+  {
+    "house": "Tyrell",
+    "name": "Mace Tyrell",
+    "order": 1,
+    "strength": 4,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "Immediately destroy one of your opponent's attacking or defending Footmen unit's"
+  },
+  {
+    "house": "Tyrell",
+    "name": "Ser Loras Tyrell",
+    "order": 2,
+    "strength": 3,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you are attacking and win this combat, move the March Order token used into the conquered area. The March Order may be resolved again later this round"
+  },
+  {
+    "house": "Tyrell",
+    "name": "Ser Garlan Tyrell",
+    "order": 3,
+    "strength": 2,
+    "swords": 2,
+    "fortifications": 0,
+    "text": ""
+  },
+  {
+    "house": "Tyrell",
+    "name": "Randell Tarly",
+    "order": 4,
+    "strength": 2,
+    "swords": 1,
+    "fortifications": 0,
+    "text": ""
+  },
+  {
+    "house": "Tyrell",
+    "name": "Alester Florent",
+    "order": 5,
+    "strength": 1,
+    "swords": 0,
+    "fortifications": 1,
+    "text": ""
+  },
+  {
+    "house": "Tyrell",
+    "name": "Margaery Tyrell",
+    "order": 6,
+    "strength": 1,
+    "swords": 0,
+    "fortifications": 1,
+    "text": ""
+  },
+  {
+    "house": "Tyrell",
+    "name": "Queen of Thorns",
+    "order": 7,
+    "strength": 0,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "Immediately remove one of your opponent's Order tokens in any one area adjacent to the embattled area. You may not remove the March Order token used to start this combat"
+  },
+  {
+    "house": "Stark",
+    "name": "Eddard Stark",
+    "order": 1,
+    "strength": 4,
+    "swords": 2,
+    "fortifications": 0,
+    "text": ""
+  },
+  {
+    "house": "Stark",
+    "name": "Robb Stark",
+    "order": 2,
+    "strength": 3,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you win this combat, you may choose the area to which your opponent retreats. You must choose a legal area where your opponent loses the fewest units"
+  },
+  {
+    "house": "Stark",
+    "name": "Roose Bolton",
+    "order": 3,
+    "strength": 2,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you lose this combat, return your entire House card discard pile into your hand (including this card)"
+  },
+  {
+    "house": "Stark",
+    "name": "Greatjon Umber",
+    "order": 4,
+    "strength": 2,
+    "swords": 1,
+    "fortifications": 0,
+    "text": ""
+  },
+  {
+    "house": "Stark",
+    "name": "Ser Rodrik Cassel",
+    "order": 5,
+    "strength": 1,
+    "swords": 0,
+    "fortifications": 2,
+    "text": ""
+  },
+  {
+    "house": "Stark",
+    "name": "The Blackfish",
+    "order": 6,
+    "strength": 1,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "You do not take casulties in this combat from House card abilities, Combat icons, or Tides of Battle cards"
+  },
+  {
+    "house": "Stark",
+    "name": "Catelyn Stark",
+    "order": 7,
+    "strength": 0,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you have a Defense Order token in the embattled area, its value is doubled"
+  },
+  {
+    "house": "Baratheon",
+    "name": "Stannis Baratheon",
+    "order": 1,
+    "strength": 4,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If your opponent has a higher position on the Iron Throne influence track than you, this card gains +1 combat strength"
+  },
+  {
+    "house": "Baratheon",
+    "name": "Kenly Baratheon",
+    "order": 2,
+    "strength": 3,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you win this combat, you may upgrade one of your participating Footman (or one supporting Footman) to a Knight"
+  },
+  {
+    "house": "Baratheon",
+    "name": "Ser Davos Seaworth",
+    "order": 3,
+    "strength": 2,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If \"Stannis Baratheon\" is in your discard pile, this card gains +1 combat strength and a sword icon"
+  },
+  {
+    "house": "Baratheon",
+    "name": "Brienne of Tarth",
+    "order": 4,
+    "strength": 2,
+    "swords": 1,
+    "fortifications": 1,
+    "text": ""
+  },
+  {
+    "house": "Baratheon",
+    "name": "Melisandre",
+    "order": 5,
+    "strength": 1,
+    "swords": 1,
+    "fortifications": 0,
+    "text": ""
+  },
+  {
+    "house": "Baratheon",
+    "name": "Salladhor Saan",
+    "order": 6,
+    "strength": 1,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you are being supported in this combat, the combat strength of all non-Baratheon Ships is reduced to 0"
+  },
+  {
+    "house": "Baratheon",
+    "name": "Patchface",
+    "order": 7,
+    "strength": 0,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "After combat, you may look at your opponent's hand and discard one card of your choice"
+  },
+  {
+    "house": "Martell",
+    "name": "The Red Viper",
+    "order": 1,
+    "strength": 4,
+    "swords": 2,
+    "fortifications": 1,
+    "text": ""
+  },
+  {
+    "house": "Martell",
+    "name": "Areo Hotah",
+    "order": 2,
+    "strength": 3,
+    "swords": 0,
+    "fortifications": 1,
+    "text": ""
+  },
+  {
+    "house": "Martell",
+    "name": "Obara Sand",
+    "order": 3,
+    "strength": 2,
+    "swords": 1,
+    "fortifications": 0,
+    "text": ""
+  },
+  {
+    "house": "Martell",
+    "name": "Darkstar",
+    "order": 4,
+    "strength": 2,
+    "swords": 1,
+    "fortifications": 0,
+    "text": ""
+  },
+  {
+    "house": "Martell",
+    "name": "Nymeria Sand",
+    "order": 5,
+    "strength": 1,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you are defending, this card gains a fortification icon. If you are attacking, this card gains a sword icon"
+  },
+  {
+    "house": "Martell",
+    "name": "Arianne Martell",
+    "order": 6,
+    "strength": 1,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "If you are defending and lose this combat, your opponent may not move his units into the embattled area. They return to the area from which they marched. Your own units must still retreat"
+  },
+  {
+    "house": "Martell",
+    "name": "Doran Martell",
+    "order": 7,
+    "strength": 0,
+    "swords": 0,
+    "fortifications": 0,
+    "text": "Immediately move your opponent to the bottom of one influence track of your choice"
+  }
+]

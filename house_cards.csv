@@ -1,0 +1,43 @@
+house,name,order,strength,swords,fortifications,text
+Greyjoy,Euron Crow's Eye,1,4,1,0,
+Greyjoy,Victarion Grejoy,2,3,0,0,"If you are attacking, all of your participating Ships (including supporting Greyjoy Ships) add +2 to combat strength instead of +1"
+Greyjoy,Theon Greyjoy,3,2,0,0,"If you are defending an area that contains either a Stronghold or a Castle, this card gains +1 combat strength and a sword icon"
+Greyjoy,Balon Greyjoy,4,2,0,0,The printed combat strength of your opponent's House card is reduced to 0
+Greyjoy,Asha Greyjoy,5,1,0,0,"If you are not being supported in this combat, this card gains two sword icons and one fortification icon"
+Greyjoy,Dagmar Cleftjaw,6,1,1,1,
+Greyjoy,Aeron Damphair,7,0,0,0,You may immediately discard two of your available Power tokens to discard Aeron Damphair and choose a difference House Card from your hand (if able)
+Lannister,Tywin Lannister,1,4,0,0,"If you win this combat, gain two power tokens"
+Lannister,Ser Gregor Clegane,2,3,3,0,
+Lannister,The Hound,3,2,0,2,
+Lannister,Ser Jaime Lannister,4,2,1,0,
+Lannister,Tyrion Lannister,5,1,0,0,"You may immediately cancel your opponent's House card and return it to his hand. He must then choose a difference House card to reveal. If he has no other House cards in hand, he cannot use a House card this comabat"
+Lannister,Ser Kevan Lannister,6,1,0,0,"If you are attacking, all of your participating Footman (including supporting Lannister footmen) add +2 combat strength instead of +1"
+Lannister,Cersei Lannister,7,0,0,0,"If you win this combat, you may remove one of the losing opponent's Order tokens from anywhere on the board"
+Tyrell,Mace Tyrell,1,4,0,0,Immediately destroy one of your opponent's attacking or defending Footmen unit's
+Tyrell,Ser Loras Tyrell,2,3,0,0,"If you are attacking and win this combat, move the March Order token used into the conquered area. The March Order may be resolved again later this round"
+Tyrell,Ser Garlan Tyrell,3,2,2,0,
+Tyrell,Randell Tarly,4,2,1,0,
+Tyrell,Alester Florent,5,1,0,1,
+Tyrell,Margaery Tyrell,6,1,0,1,
+Tyrell,Queen of Thorns,7,0,0,0,Immediately remove one of your opponent's Order tokens in any one area adjacent to the embattled area. You may not remove the March Order token used to start this combat
+Stark,Eddard Stark,1,4,2,0,
+Stark,Robb Stark,2,3,0,0,"If you win this combat, you may choose the area to which your opponent retreats. You must choose a legal area where your opponent loses the fewest units"
+Stark,Roose Bolton,3,2,0,0,"If you lose this combat, return your entire House card discard pile into your hand (including this card)"
+Stark,Greatjon Umber,4,2,1,0,
+Stark,Ser Rodrik Cassel,5,1,0,2,
+Stark,The Blackfish,6,1,0,0,"You do not take casulties in this combat from House card abilities, Combat icons, or Tides of Battle cards"
+Stark,Catelyn Stark,7,0,0,0,"If you have a Defense Order token in the embattled area, its value is doubled"
+Baratheon,Stannis Baratheon,1,4,0,0,"If your opponent has a higher position on the Iron Throne influence track than you, this card gains +1 combat strength"
+Baratheon,Kenly Baratheon,2,3,0,0,"If you win this combat, you may upgrade one of your participating Footman (or one supporting Footman) to a Knight"
+Baratheon,Ser Davos Seaworth,3,2,0,0,"If ""Stannis Baratheon"" is in your discard pile, this card gains +1 combat strength and a sword icon"
+Baratheon,Brienne of Tarth,4,2,1,1,
+Baratheon,Melisandre,5,1,1,0,
+Baratheon,Salladhor Saan,6,1,0,0,"If you are being supported in this combat, the combat strength of all non-Baratheon Ships is reduced to 0"
+Baratheon,Patchface,7,0,0,0,"After combat, you may look at your opponent's hand and discard one card of your choice"
+Martell,The Red Viper,1,4,2,1,
+Martell,Areo Hotah,2,3,0,1,
+Martell,Obara Sand,3,2,1,0,
+Martell,Darkstar,4,2,1,0,
+Martell,Nymeria Sand,5,1,0,0,"If you are defending, this card gains a fortification icon. If you are attacking, this card gains a sword icon"
+Martell,Arianne Martell,6,1,0,0,"If you are defending and lose this combat, your opponent may not move his units into the embattled area. They return to the area from which they marched. Your own units must still retreat"
+Martell,Doran Martell,7,0,0,0,Immediately move your opponent to the bottom of one influence track of your choice

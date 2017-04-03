@@ -1,0 +1,193 @@
+<html>
+<head>
+	<title>GoT Helper</title>
+	<!--<base href="/">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	<link rel="icon" href="images/wolf.png">
+	
+	<style>	
+		.card-list > .list-group-item {
+			padding: .5rem .75rem;
+		}
+		
+		.card-list > .list-group-item.inactive {
+			color: lightgray;
+			filter: grayscale(100%);
+			opacity: .5;
+		}
+		
+		.pt-container {
+			position: relative;
+			background-color: black;
+		}
+		
+		.pt-container > span {
+			position: absolute;
+			top: 50%;
+			margin-top: -14px;
+			left: 50%;
+			margin-left: -9px;
+			color: white;
+			user-select: none;
+			pointer-events: none;
+		}
+		
+		.edit-pt {
+			position: absolute;
+			right: 15px;
+			bottom: -30px;
+			z-index: 1;
+		}
+		
+		.pt-6 {
+			padding-top: 4rem !important;
+		}
+		
+		.edit-page-button {
+			position: fixed;
+			top: 5px;
+			left: 5px;
+		}
+		
+	</style>
+	
+</head>
+<body>
+	<div ng-app="app" ng-controller="Controller as vm" ng-cloak>
+		<div class="container-fluid">
+			<div class="row fixed-top">
+				<button type="button" class="btn btn-secondary edit-page-button" ng-click="vm.editPage = !vm.editPage">
+					<img class="" src="images/edit.png" width="25">
+				</button>
+				
+				<div class="offset-2 col-8 offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-xl-5 col-xl-2" ng-show="vm.editPage">
+					<div class="alert alert-warning text-center" role="alert">
+						Edit mode is <strong> On </strong>
+					</div>
+				</div>
+			</div>
+			<div class="row pt-6">
+				<div class="col-12 col-sm-6 col-md-4 col-xl-2" ng-repeat="(house, houseInfo) in vm.houses">
+					<div class="row" style="position: relative">
+						<img class="float-left pl-3 pr-3" ng-src="images/{{house}}.png" height="75">
+						<h3 class="d-flex align-self-center">{{house}}</h3>
+					</div>
+					<div class="row" style="position: relative">
+						<div class="pt-container ml-auto align-self-center mr-4">
+							<span>{{houseInfo.pt}}</span>
+							<img src="images/pt_bg_inverse.png" height="40">
+						</div>
+						
+						<div class="edit-pt" ng-show="vm.editPage">
+							<button type="button" class="btn btn-secondary btn-sm" ng-click="houseInfo.pt = houseInfo.pt + 1">+</button>
+							<button type="button" class="btn btn-secondary btn-sm" ng-click="houseInfo.pt = houseInfo.pt - 1">-</button>
+						</div>
+					</div>
+					<ul class="list-group card-list pt-3 pb-5">
+						<button type="button" class="list-group-item list-group-item-action" ng-class="{inactive: !card.active}" ng-repeat="card in houseInfo.cards | orderBy:vm.cardOrder" ng-click="card.active = !card.active" ng-disabled="!vm.editPage">
+							<div class="d-flex w-100">
+								<h3 class="mr-4">{{card.strength}}</h3>
+							
+								<div class="d-flex w-100 justify-content-between align-self-center">
+									<h6 class="mb-1">{{card.name}}</h6>
+									<small>
+										<img src="images/sword.png" height="30" ng-repeat="s in vm.repeat(card.swords) track by $index"></img>
+										<img src="images/fort.png" height="30" ng-repeat="s in vm.repeat(card.fortifications) track by $index"></img>
+									</small>
+								</div>
+							</div>
+							<small class="mb-1">{{card.text}}</small>
+						</button>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	
+	<script>
+		
+		angular.module('app', []);
+		
+		angular.module('app').controller('Controller', Controller);
+		
+		Controller.$inject = ['$http', '$scope'];
+		
+		function Controller($http, $scope) {
+			var vm = this;
+			
+			vm.houses = {};
+			
+			var config = {
+				apiKey: "AIzaSyBrS0okMVKfQ_EHhe1Iyvf4CadHX-n95zA",
+				authDomain: "got-helper.firebaseapp.com",
+				databaseURL: "https://got-helper.firebaseio.com",
+				projectId: "got-helper",
+				storageBucket: "got-helper.appspot.com",
+				messagingSenderId: "369131252409"
+			};
+			firebase.initializeApp(config);
+			var gameRef = firebase.database().ref('game');
+			
+			gameRef.on('value', function(snapshot) {
+				var val = snapshot.val();
+				if(isValidGameState(val)) {
+					angular.copy(val, vm.houses);
+					if(!$scope.$$phase) {
+					  $scope.$apply();
+					}
+				}else {
+					resetGame();
+				}
+			});
+			
+			$scope.$watch('vm.houses', (houses) => {
+				if(isValidGameState(houses)) {
+					gameRef.set(angular.copy(houses));
+				}
+			}, true);
+
+			
+			vm.repeat = (num) => {
+				return new Array(num);   
+			}
+			
+			vm.cardOrder = (card) => {
+				return card.active ? card.order - 100 : card.order;
+			}
+
+			function isValidGameState(game) {
+				return (game && Object.keys(game).length >= 6);
+			}
+			
+			function resetGame() {
+				$http.get('house_cards.json').then((response) => {
+					response.data.forEach((card) => {				
+						var house = vm.houses[card.house] || {};
+						house.cards = house.cards || [];
+						house.cards.push(card);
+						
+						card.active = true;
+						house.pt = 20;
+						
+						vm.houses[card.house] = house;
+					});
+					
+					vm.houseCards = response.data;
+				});
+			}
+		}
+		
+		
+		
+	
+	</script>
+
+</body>
+</html>
