@@ -4,10 +4,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-	
+	<base href="/">
+
 	<link rel="icon" href="images/wolf.png">
 	
-	<style>	
+	<style>
 		.card-list > .list-group-item {
 			padding: .5rem .75rem;
 		}
@@ -54,9 +55,31 @@
 		
 	</style>
 	
+	<style>
+		#app-container.night {
+			color: white !important;
+			background-color: black;
+		}
+
+		#app-container.night .pt-container {
+			background-color: #e5e5e5;;			
+		}
+
+		#app-container.night .pt-container > span {
+			color: black;
+			font-weight: bold;
+		}
+
+		#app-container.night .card-list > .list-group-item {
+			background-color: #323232;
+			border: 1px solid rgba(255,255,255,.375);
+			color: #cccccc;
+		}
+	</style>
+
 </head>
 <body>
-	<div ng-app="app" ng-controller="Controller as vm" ng-cloak>
+	<div id="app-container" ng-class="{night: vm.night}" ng-app="app" ng-controller="Controller as vm" ng-cloak>
 		<div class="container-fluid">
 			<md-button class="edit-page-button md-fab md-primary md-fab-bottom-right" ng-click="vm.editPage = !vm.editPage" ng-if="vm.canEdit">
 				<img class="" src="images/edit.png" width="25">
@@ -89,7 +112,7 @@
 						</div>
 						<div class="pt-container ml-auto align-self-center mr-4">
 							<span>{{houseInfo.pt}}</span>
-							<img src="images/pt_bg_inverse.png" height="40" style="margin: -1px;">
+							<img src="{{ vm.night ? 'images/pt_bg_inverse_night.png' : 'images/pt_bg_inverse.png' }}" height="40" style="margin: -1px;">
 						</div>
 						<div class="edit-pt" ng-show="vm.editPage">
 							<button type="button" class="btn btn-secondary btn-sm" ng-click="houseInfo.pt = houseInfo.pt + 1" ng-disabled="houseInfo.pt >= 20">+</button>
@@ -105,8 +128,8 @@
 								<div class="d-flex w-100 justify-content-between align-self-center">
 									<h6 class="mb-1">{{card.name}}</h6>
 									<small>
-										<img src="images/sword.png" height="30" ng-repeat="s in vm.repeat(card.swords) track by $index"></img>
-										<img src="images/fort.png" height="30" ng-repeat="s in vm.repeat(card.fortifications) track by $index"></img>
+										<img src="{{ vm.night ? 'images/sword_night.png' : 'images/sword.png' }}" height="30" ng-repeat="s in vm.repeat(card.swords) track by $index"></img>
+										<img src="{{ vm.night ? 'images/fort_night.png' : 'images/fort.png' }}" height="30" ng-repeat="s in vm.repeat(card.fortifications) track by $index"></img>
 									</small>
 								</div>
 							</div>
@@ -141,6 +164,7 @@
 			var vm = this;
 			
 			vm.canEdit = ($location.absUrl().indexOf('banker') > -1);
+			vm.night = ($location.absUrl().indexOf('night') > -1);
 			
 			vm.houses = {};
 			
