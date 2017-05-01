@@ -27,8 +27,10 @@
 			position: absolute;
 			top: 50%;
 			margin-top: -14px;
-			left: 50%;
-			margin-left: -9px;
+			/*left: 50%;
+			margin-left: -9px;*/
+			width: 100%;
+			text-align: center;
 			color: white;
 			user-select: none;
 			pointer-events: none;
@@ -56,7 +58,7 @@
 <body>
 	<div ng-app="app" ng-controller="Controller as vm" ng-cloak>
 		<div class="container-fluid">
-			<md-button class="edit-page-button md-fab md-primary md-fab-bottom-right" ng-click="vm.editPage = !vm.editPage">
+			<md-button class="edit-page-button md-fab md-primary md-fab-bottom-right" ng-click="vm.editPage = !vm.editPage" ng-if="vm.canEdit">
 				<img class="" src="images/edit.png" width="25">
 			</md-button>
 			<div class="row fixed-top" style="pointer-events:none">				
@@ -133,10 +135,12 @@
 		
 		angular.module('app').controller('Controller', Controller);
 		
-		Controller.$inject = ['$http', '$scope'];
+		Controller.$inject = ['$http', '$scope', '$location'];
 		
-		function Controller($http, $scope) {
+		function Controller($http, $scope, $location) {
 			var vm = this;
+			
+			vm.canEdit = ($location.absUrl().indexOf('banker') > -1);
 			
 			vm.houses = {};
 			
