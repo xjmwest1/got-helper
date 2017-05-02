@@ -9,6 +9,10 @@
 	<link rel="icon" href="images/wolf.png">
 	
 	<style>
+		#app-container {
+			min-height: 100%;
+		}
+
 		.card-list > .list-group-item {
 			padding: .5rem .75rem;
 		}
@@ -91,7 +95,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row pt-6">
+			<div class="row" ng-class="vm.editPage ? 'pt-6' : 'pt-3'">
 				<div class="col-12 col-sm-6 col-md-4 col-xl-2" ng-repeat="(house, houseInfo) in vm.houses">
 					<div class="row">
 						
